@@ -8,9 +8,12 @@
 #ifndef MAIN_H_
 #define MAIN_H_
 
-//Library's
-#include "Frontlayer.h"
-#include "Logiclayer.h"
+//System library's
+#include "stm32f4xx.h"
+
+// Layer library's
+#include "FrontLayer.h"
+#include "LogicLayer.h"
 #include "IO-Layer.h"
 
 

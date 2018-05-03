@@ -28,7 +28,8 @@ SOFTWARE.
 */
 
 /* Includes */
-#include "stm32f4xx.h"
+#include "main.h"
+
 
 /* Private macro */
 /* Private variables */
