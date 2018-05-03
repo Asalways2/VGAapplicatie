@@ -21,4 +21,9 @@
 #include "draw.h"
 
 
+#define WAIT_FOREVER 0
+#define TRUE		 1
+#define FALSE		 0
+
+
 #endif /* MAIN_H_ */
