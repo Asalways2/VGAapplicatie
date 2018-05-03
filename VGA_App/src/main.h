@@ -16,5 +16,9 @@
 #include "LogicLayer.h"
 #include "IO-Layer.h"
 
+//test
+#include "API_io.h"
+#include "draw.h"
+
 
 #endif /* MAIN_H_ */
