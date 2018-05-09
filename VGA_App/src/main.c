@@ -69,7 +69,7 @@ int main(void)
 
 	UART_puts(message);
 
-	UB_VGA_Screen_Init(); // Init VGA-Screen
+	VGA_init(); // Init VGA-Screen
 
 	UB_VGA_FillScreen(VGA_COL_BLACK);
 	UB_VGA_SetPixel(10,10,10);

@@ -20,6 +20,9 @@
 #include "stm32f4xx_rcc.h"
 #include "stm32f4xx_gpio.h"
 
+#include "API_io.h"
+
+
 void UART_init(void);
 void UART_putchar(char c);
 void UART_puts(char *s);
@@ -27,5 +30,8 @@ void UART_putnum(unsigned int num, unsigned char deel);
 void UART_putint(unsigned int num);
 char UART_readChar(void);
 void UART_read(char *s, int echo);
+void VGA_init(void);
+
+
 
 #endif /* APPLAYERS_IO_LAYER_IO_LAYER_H_ */

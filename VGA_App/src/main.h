@@ -16,9 +16,7 @@
 #include "LogicLayer.h"
 #include "IO-Layer.h"
 
-//test
-#include "API_io.h"
-#include "draw.h"
+
 
 
 #define WAIT_FOREVER 0

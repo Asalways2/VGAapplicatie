@@ -11,6 +11,11 @@ char string[100];
 int charcounter = 0;
 
 
+void VGA_init() {
+	UB_VGA_Screen_Init();
+}
+
+
 void UARTinit(void)
 {
 
