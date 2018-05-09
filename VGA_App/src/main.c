@@ -30,6 +30,8 @@ SOFTWARE.
 /* Includes */
 #include "main.h"
 
+char* message = "Hello!\r\n";
+
 
 /* Private macro */
 /* Private variables */
@@ -48,6 +50,12 @@ int main(void)
 	SystemInit();
 	int i = 0;
 
+	RCC_ClocksTypeDef Clockvalue;
+
+	RCC_GetClocksFreq(&Clockvalue);
+
+
+
 	/**
 	 *  IMPORTANT NOTE!
 	 *  The symbol VECT_TAB_SRAM needs to be defined when building the project
@@ -57,6 +65,14 @@ int main(void)
 	 *  SCB->VTOR register.
 	 *  E.g.  SCB->VTOR = 0x20000000;
 	 */
+	UARTinit();
+
+	UART_puts(message);
+
+	UB_VGA_Screen_Init(); // Init VGA-Screen
+
+	UB_VGA_FillScreen(VGA_COL_BLACK);
+	UB_VGA_SetPixel(10,10,10);
 
 	/* TODO - Add your application code here */
 

@@ -152,7 +152,7 @@
 
 /************************* PLL Parameters *************************************/
 /* PLL_VCO = (HSE_VALUE or HSI_VALUE / PLL_M) * PLL_N */
-#define PLL_M      25
+#define PLL_M      8
 #define PLL_N      336
 
 /* SYSCLK = PLL_VCO / PLL_P */
@@ -380,7 +380,7 @@ static void SetSysClock(void)
     RCC->CFGR |= RCC_CFGR_HPRE_DIV1;
       
     /* PCLK2 = HCLK / 2*/
-    RCC->CFGR |= RCC_CFGR_PPRE2_DIV2;
+    RCC->CFGR |= RCC_CFGR_PPRE2_DIV1;
     
     /* PCLK1 = HCLK / 4*/
     RCC->CFGR |= RCC_CFGR_PPRE1_DIV4;
