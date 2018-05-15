@@ -74,11 +74,14 @@ int main(void)
 	UB_VGA_FillScreen(VGA_COL_BLACK);
 	UB_VGA_SetPixel(10,10,10);
 
+
+
 	/* TODO - Add your application code here */
 
 	/* Infinite loop */
 	while (1)
 	{
+		getData();
 		i++;
 	}
 }

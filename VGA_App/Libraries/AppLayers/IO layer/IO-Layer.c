@@ -150,7 +150,7 @@ void UART_read(char *s, int echo)
 {
 	while (TRUE)
 	{
-	 	*s = UART_get();
+	 	*s = UART_readChar();
 
 	 	if (*s==-1)             // check for data available
 	 		continue;
@@ -168,5 +168,9 @@ void UART_read(char *s, int echo)
 		}
 		s++;
 	}
+}
+
+uint8_t UART_dataAvailable() {
+	return(USART_GetFlagStatus(USART2, USART_FLAG_RXNE)); // check for data available
 }
 

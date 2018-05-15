@@ -16,9 +16,10 @@
 #include  <stdlib.h>
 
 // System library's
-#include "stm32f4xx_usart.h"
 #include "stm32f4xx_rcc.h"
 #include "stm32f4xx_gpio.h"
+#include "stm32f4xx_usart.h"
+
 
 #include "API_io.h"
 
@@ -30,6 +31,7 @@ void UART_putnum(unsigned int num, unsigned char deel);
 void UART_putint(unsigned int num);
 char UART_readChar(void);
 void UART_read(char *s, int echo);
+uint8_t UART_dataAvailable(void);
 void VGA_init(void);
 
 
