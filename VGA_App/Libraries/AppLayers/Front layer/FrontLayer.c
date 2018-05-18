@@ -77,9 +77,9 @@ uint8_t fillStruct(char** data, uint8_t dataCount) {
 	uint8_t type = getType(data[0], &fillFlags);
 	UART_putint(type);
 
-	if(fillFlags.command != noValue){
+	if(fillFlags.command != noValue) {
 		commandBuffer.command = type;
-		if(fillFlags.X != noValue){
+		if(fillFlags.X != noValue) {
 		stringToInt(data[fillFlags.X],&commandBuffer.X, 0, 65535);
 		}
 		else{
@@ -124,14 +124,15 @@ uint8_t fillStruct(char** data, uint8_t dataCount) {
 		if(fillFlags.tekst != noValue){
 			strcpy(commandBuffer.tekst, data[fillFlags.tekst]);
 		}
-	}
 
-	if(commandStorageCounter < storageSize) {
-	memcpy(&commandStorage[commandStorageCounter], &commandBuffer, sizeof commandBuffer);
-	commandStorageCounter++;
-	}
-	else{
-		UART_puts("\r\nBuffer full.\r\n");
+
+		if(commandStorageCounter < storageSize) {
+			memcpy(&commandStorage[commandStorageCounter], &commandBuffer, sizeof commandBuffer);
+			commandStorageCounter++;
+		}
+		else{
+			UART_puts("\r\nBuffer full.\r\n");
+		}
 	}
 	//printCommandStruct(&commandStorage[commandStorageCounter-1]);
 
@@ -265,7 +266,7 @@ uint8_t getType(char* data, struct fillStructure* flags){
 		return(wacht);
 	}
 	else if(!strcmp(data, "execute")){
-		flags->command = 0;
+		flags->command = noValue;
 		flags->X = noValue;
 		flags->Y = noValue;
 		flags->_X = noValue;
@@ -274,6 +275,8 @@ uint8_t getType(char* data, struct fillStructure* flags){
 		flags->opt2 = noValue;
 		flags->color = noValue;
 		flags->tekst = noValue;
+		executeScript(commandStorage, commandStorageCounter);
+		commandStorageCounter=0;
 		return(execute);
 	}
 	else{

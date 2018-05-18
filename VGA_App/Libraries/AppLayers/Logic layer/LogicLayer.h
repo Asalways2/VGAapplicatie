@@ -10,6 +10,6 @@
 
 #include "draw.h"
 
-
+void executeScript(struct scriptStructure* storage, uint8_t dataSize);
 
 #endif /* APPLAYERS_LOGIC_LAYER_LOGICLAYER_H_ */

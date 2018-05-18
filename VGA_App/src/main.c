@@ -47,7 +47,8 @@ char* message = "Hello!\r\n";
 */
 int main(void)
 {
-	SystemInit();
+
+SystemInit();
 	int i = 0;
 
 	RCC_ClocksTypeDef Clockvalue;
@@ -72,8 +73,7 @@ int main(void)
 	VGA_init(); // Init VGA-Screen
 
 	UB_VGA_FillScreen(VGA_COL_GREEN);
-	UB_VGA_SetPixel(10,10,10);
-	DrawLine(10,10,20, 50, 50, 2);
+
 
 
 	/* TODO - Add your application code here */
