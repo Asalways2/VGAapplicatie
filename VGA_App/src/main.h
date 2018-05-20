@@ -8,6 +8,8 @@
 #ifndef MAIN_H_
 #define MAIN_H_
 
+#define DEBUG
+
 //System library's
 #include "stm32f4xx.h"
 
@@ -17,7 +19,10 @@
 #include "IO-Layer.h"
 
 
+void debugPuts(char* message);
+void debugPutInt(int number);
 
+extern void UARTinit(void);
 
 
 #define WAIT_FOREVER 0

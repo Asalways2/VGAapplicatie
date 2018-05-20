@@ -19,6 +19,27 @@ int i = 0;
 			DrawLine(storage->X, storage->Y, storage->_X, storage->_Y,
 					storage->color, storage->opt1);
 			break;
+		case ellips:
+
+			break;
+		case rechthoek:
+
+			break;
+		case driehoek:
+
+			break;
+		case tekst:
+
+			break;
+		case bitmap:
+
+			break;
+		case clearscreen:
+
+			break;
+		case wacht:
+
+			break;
 		default:
 
 			break;

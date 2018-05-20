@@ -49,7 +49,7 @@ int main(void)
 {
 
 SystemInit();
-	int i = 0;
+
 
 	RCC_ClocksTypeDef Clockvalue;
 
@@ -76,12 +76,29 @@ SystemInit();
 
 
 
-	/* TODO - Add your application code here */
 
 	/* Infinite loop */
 	while (1)
 	{
 		getData();
-		i++;
 	}
+}
+
+
+void debugPuts(char* message){
+	#ifdef DEBUG
+	UART_puts(message);
+	#endif
+}
+
+void debugPutInt(int number){
+	#ifdef DEBUG
+		if(number >= 0) {
+			UART_putint(number);
+		}
+		else {
+			UART_putchar('-');
+			UART_putint(number*-1);
+		}
+#endif
 }

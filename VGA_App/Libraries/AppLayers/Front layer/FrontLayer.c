@@ -25,13 +25,13 @@ uint8_t getData() { //need to add error return type
 	if(stringSplit(buffer, ",", data, &dataCount) != 1) {
 		int i = 0;
 		for(i=0;i<dataCount; i++){
-			UART_puts(data[i]);
-			UART_puts("\r\n");
+			debugPuts(data[i]);
+			debugPuts("\r\n");
 		}
 		fillStruct(data, dataCount);
 	}
 	else{
-		UART_puts("Too many arguments.");
+		debugPuts("Too many arguments.");
 	}
 
 }
@@ -75,7 +75,7 @@ uint8_t fillStruct(char** data, uint8_t dataCount) {
 	struct fillStructure fillFlags;
 
 	uint8_t type = getType(data[0], &fillFlags);
-	UART_putint(type);
+	debugPutInt(type);
 
 	if(fillFlags.command != noValue) {
 		commandBuffer.command = type;
@@ -131,7 +131,7 @@ uint8_t fillStruct(char** data, uint8_t dataCount) {
 			commandStorageCounter++;
 		}
 		else{
-			UART_puts("\r\nBuffer full.\r\n");
+			debugPuts("\r\nBuffer full.\r\n");
 		}
 	}
 	//printCommandStruct(&commandStorage[commandStorageCounter-1]);
@@ -140,30 +140,30 @@ uint8_t fillStruct(char** data, uint8_t dataCount) {
 
 void printCommandStruct(struct scriptStructure* commandBuffer){
 
-	UART_puts("\r\n\r\nX:");
-	UART_putint(commandBuffer->X);
-	UART_puts("\r\n");
-	UART_puts("Y:");
-	UART_putint(commandBuffer->Y);
-	UART_puts("\r\n");
-	UART_puts("_X:");
-	UART_putint(commandBuffer->_X);
-	UART_puts("\r\n");
-	UART_puts("_Y:");
-	UART_putint(commandBuffer->_Y);
-	UART_puts("\r\n");
-	UART_puts("opt1:");
-	UART_putint(commandBuffer->opt1);
-	UART_puts("\r\n");
-	UART_puts("opt2:");
-	UART_putint(commandBuffer->opt2);
-	UART_puts("\r\n");
-	UART_puts("color:");
-	UART_putint(commandBuffer->color);
-	UART_puts("\r\n");
-	UART_puts("tekst:");
-	UART_puts(commandBuffer->tekst);
-	UART_puts("\r\n\r\n");
+	debugPuts("\r\n\r\nX:");
+	debugPutInt(commandBuffer->X);
+	debugPuts("\r\n");
+	debugPuts("Y:");
+	debugPutInt(commandBuffer->Y);
+	debugPuts("\r\n");
+	debugPuts("_X:");
+	debugPutInt(commandBuffer->_X);
+	debugPuts("\r\n");
+	debugPuts("_Y:");
+	debugPutInt(commandBuffer->_Y);
+	debugPuts("\r\n");
+	debugPuts("opt1:");
+	debugPutInt(commandBuffer->opt1);
+	debugPuts("\r\n");
+	debugPuts("opt2:");
+	debugPutInt(commandBuffer->opt2);
+	debugPuts("\r\n");
+	debugPuts("color:");
+	debugPutInt(commandBuffer->color);
+	debugPuts("\r\n");
+	debugPuts("tekst:");
+	debugPuts(commandBuffer->tekst);
+	debugPuts("\r\n\r\n");
 
 }
 
