@@ -8,6 +8,11 @@
 #ifndef APPLAYERS_IO_LAYER_IO_LAYER_H_
 #define APPLAYERS_IO_LAYER_IO_LAYER_H_
 
+uint32_t G_CLK;
+uint32_t D_uS; // Global variable (us)
+uint32_t D_mS; // Global variable (ms)
+uint32_t D_S; // Global variable (s)
+
 #define CR 13 // carriage return char
 #define LF 10 // linefeed char
 
@@ -33,6 +38,11 @@ char UART_readChar(void);
 void UART_read(char *s, int echo);
 uint8_t UART_dataAvailable(void);
 void VGA_init(void);
+
+void DELAY_init(void);
+void DELAY_us(unsigned int x);
+void DELAY_ms(unsigned int x);
+void DELAY_s(unsigned int x);
 
 
 

@@ -174,3 +174,46 @@ uint8_t UART_dataAvailable() {
 	return(USART_GetFlagStatus(USART2, USART_FLAG_RXNE)); // check for data available
 }
 
+
+void DELAY_init(void)
+{
+	RCC_ClocksTypeDef Clocks;
+	RCC_GetClocksFreq(&Clocks);
+	G_CLK = Clocks.SYSCLK_Frequency;	// Read the systemclock
+	D_S  = (G_CLK*1.25)/9/2;	// Number of instructions in one second
+	D_mS = (G_CLK*1.25)/9000/2; // Number of instructions in one millisecond
+	D_uS = (G_CLK*1.25)/9000000/2; // Number of instructions in one microsecond, largest rounding error
+}
+
+void DELAY_us(volatile unsigned int time)
+{
+    volatile unsigned int i;
+
+    while(time>0)		// Run x times 1 microsecond
+    {
+        for(i=0;i<D_uS;i++);
+        time--;
+    }
+}
+
+void DELAY_ms(volatile unsigned int time)
+{
+    volatile unsigned int i;
+
+    while(time>0)		// Run x times 1 millisecond
+    {
+        for(i=0;i<D_mS;i++);
+        time--;
+    }
+}
+
+void DELAY_s(volatile unsigned int time)
+{
+    volatile unsigned int i;
+
+    while(time>0)		// Run x times 1 second
+    {
+        for(i=0;i<D_S;i++);
+        time--;
+    }
+}

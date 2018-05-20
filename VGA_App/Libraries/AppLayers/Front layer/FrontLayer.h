@@ -53,21 +53,21 @@ enum scriptcommands {
 };
 
 enum colors {
-	zwart = 0b00000000,
-	blauw = 0b00000011,
-	lichtblauw = 0x00,
-	groen = 0b00011100,
-	lichtgroen = 0x00,
-	cyaan = 0x1F,
-	lichtcyaan = 0x00,
-	rood = 0b11100000,
-	lichtrood = 0x00,
-	magenta = 0xE3,
-	lichtmagenta = 0x00,
-	bruin = 0x00,
-	geel = 0xFC,
-	grijs = 0x00,
-	wit = 0xFF
+	zwart 			= 0b00000000,
+	blauw 			= 0b00000011,
+	lichtblauw 		= 0b01101111,
+	groen 			= 0b00011100,
+	lichtgroen 		= 0b01111101,
+	cyaan 			= 0b00011111,
+	lichtcyaan	 	= 0b01111111,
+	rood 			= 0b11100000,
+	lichtrood	 	= 0b11101101,
+	magenta 		= 0b11100011,
+	lichtmagenta 	= 0b11101111,
+	bruin 			= 0b01000100,
+	geel 			= 0b11111100,
+	grijs 			= 0b01101110,
+	wit 			= 0xFF
 };
 
 

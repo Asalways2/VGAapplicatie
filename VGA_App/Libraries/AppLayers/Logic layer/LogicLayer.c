@@ -23,7 +23,8 @@ int i = 0;
 
 			break;
 		case rechthoek:
-
+			DrawRect(storage->X, storage->Y, storage->_X, storage->_Y,
+					storage->color);
 			break;
 		case driehoek:
 
@@ -38,7 +39,7 @@ int i = 0;
 
 			break;
 		case wacht:
-
+			DELAY_ms(storage->opt1);
 			break;
 		default:
 

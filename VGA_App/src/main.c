@@ -50,32 +50,15 @@ int main(void)
 
 SystemInit();
 
-
-	RCC_ClocksTypeDef Clockvalue;
-
-	RCC_GetClocksFreq(&Clockvalue);
-
-
-
-	/**
-	 *  IMPORTANT NOTE!
-	 *  The symbol VECT_TAB_SRAM needs to be defined when building the project
-	 *  if code has been located to RAM and interrupts are used.
-	 *  Otherwise the interrupt table located in flash will be used.
-	 *  See also the <system_*.c> file and how the SystemInit() function updates
-	 *  SCB->VTOR register.
-	 *  E.g.  SCB->VTOR = 0x20000000;
-	 */
 	UARTinit();
-
 	UART_puts(message);
 
+	DELAY_init();
 	VGA_init(); // Init VGA-Screen
+	UB_VGA_FillScreen(zwart);
 
-	UB_VGA_FillScreen(VGA_COL_GREEN);
-
-
-
+	DELAY_ms(5000);
+	checkColors();
 
 	/* Infinite loop */
 	while (1)
@@ -101,4 +84,56 @@ void debugPutInt(int number){
 			UART_putint(number*-1);
 		}
 #endif
+}
+
+void checkColors(){
+	UART_puts("Color test started...\r\n\r\n");
+	UART_puts("zwart\r\n");
+	UB_VGA_FillScreen(zwart);
+	DELAY_ms(3000);
+	UART_puts("blauw\r\n");
+	UB_VGA_FillScreen(blauw);
+	DELAY_ms(3000);
+	UART_puts("lichtblauw\r\n");
+	UB_VGA_FillScreen(lichtblauw);
+	DELAY_ms(3000);
+	UART_puts("groen\r\n");
+	UB_VGA_FillScreen(groen);
+	DELAY_ms(3000);
+	UART_puts("lichtgroen\r\n");
+	UB_VGA_FillScreen(lichtgroen);
+	DELAY_ms(3000);
+	UART_puts("cyaan\r\n");
+	UB_VGA_FillScreen(cyaan);
+	DELAY_ms(3000);
+	UART_puts("lichtcyaan\r\n");
+	UB_VGA_FillScreen(lichtcyaan);
+	DELAY_ms(3000);
+	UART_puts("rood\r\n");
+	UB_VGA_FillScreen(rood);
+	DELAY_ms(3000);
+	UART_puts("lichtrood\r\n");
+	UB_VGA_FillScreen(lichtrood);
+	DELAY_ms(3000);
+	UART_puts("magenta\r\n");
+	UB_VGA_FillScreen(magenta);
+	DELAY_ms(3000);
+	UART_puts("lichtmagenta\r\n");
+	UB_VGA_FillScreen(lichtmagenta);
+	DELAY_ms(3000);
+	UART_puts("bruin\r\n");
+	UB_VGA_FillScreen(bruin);
+	DELAY_ms(3000);
+	UART_puts("geel\r\n");
+	UB_VGA_FillScreen(geel);
+	DELAY_ms(3000);
+	UART_puts("grijs\r\n");
+	UB_VGA_FillScreen(grijs);
+	DELAY_ms(3000);
+	UART_puts("wit\r\n");
+	UB_VGA_FillScreen(wit);
+	DELAY_ms(3000);
+
+
+
 }

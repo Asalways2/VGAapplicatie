@@ -21,6 +21,7 @@
 
 void debugPuts(char* message);
 void debugPutInt(int number);
+void checkColors();
 
 extern void UARTinit(void);
 
