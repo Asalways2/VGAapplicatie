@@ -8,6 +8,7 @@
 
 #include "main.h"
 
+uint8_t backgroundColor = zwart;
 
 void executeScript(struct scriptStructure* storage, uint8_t dataSize) {
 int i = 0;
@@ -36,7 +37,8 @@ int i = 0;
 
 			break;
 		case clearscreen:
-
+			UB_VGA_FillScreen(storage->color);
+			backgroundColor = storage->color;
 			break;
 		case wacht:
 			DELAY_ms(storage->opt1);
