@@ -35,7 +35,7 @@ int i = 0;
 
 			break;
 		case bitmap:
-
+			Drawbitmap(storage->X, storage->Y, storage->opt1);
 			break;
 		case clearscherm:
 			UB_VGA_FillScreen(storage->color);

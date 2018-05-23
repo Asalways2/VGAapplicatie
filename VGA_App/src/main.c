@@ -59,13 +59,20 @@ SystemInit();
 
 	//DELAY_ms(5000);
 	//checkColors();
+	uint8_t error = 0;
 
 	/* Infinite loop */
 	while (1)
 	{
-		getData();
+		error = getData();
+
+
+
 	}
 }
+
+
+
 
 
 void debugPuts(char* message){
@@ -85,6 +92,8 @@ void debugPutInt(int number){
 		}
 #endif
 }
+
+
 
 void checkColors(){
 	UART_puts("Color test started...\r\n\r\n");
