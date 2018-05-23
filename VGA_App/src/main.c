@@ -57,8 +57,8 @@ SystemInit();
 	VGA_init(); // Init VGA-Screen
 	UB_VGA_FillScreen(zwart);
 
-	DELAY_ms(5000);
-	checkColors();
+	//DELAY_ms(5000);
+	//checkColors();
 
 	/* Infinite loop */
 	while (1)

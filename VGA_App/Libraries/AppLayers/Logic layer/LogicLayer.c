@@ -21,7 +21,8 @@ int i = 0;
 					storage->color, storage->opt1);
 			break;
 		case ellips:
-
+			DrawEllips(storage->X, storage->Y, storage->_X, storage->_Y,
+					storage->color);
 			break;
 		case rechthoek:
 			DrawRect(storage->X, storage->Y, storage->_X, storage->_Y,
@@ -36,7 +37,7 @@ int i = 0;
 		case bitmap:
 
 			break;
-		case clearscreen:
+		case clearscherm:
 			UB_VGA_FillScreen(storage->color);
 			backgroundColor = storage->color;
 			break;

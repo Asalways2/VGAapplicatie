@@ -47,7 +47,7 @@ enum scriptcommands {
 	driehoek,
 	tekst,
 	bitmap,
-	clearscreen,
+	clearscherm,
 	wacht,
 	execute
 };

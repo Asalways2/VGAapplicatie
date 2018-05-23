@@ -241,7 +241,7 @@ uint8_t getType(char* data, struct fillStructure* flags){
 		flags->tekst = 3;
 		return(bitmap);
 	}
-	else if(!strcmp(data, "clearscreen")){
+	else if(!strcmp(data, "clearscherm")){
 		flags->command = 0;
 		flags->X = noValue;
 		flags->Y = noValue;
@@ -251,7 +251,7 @@ uint8_t getType(char* data, struct fillStructure* flags){
 		flags->opt2 = noValue;
 		flags->color = 1;
 		flags->tekst = noValue;
-		return(clearscreen);
+		return(clearscherm);
 	}
 	else if(!strcmp(data, "wacht")){
 		flags->command = 0;
