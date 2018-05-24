@@ -70,6 +70,13 @@ enum colors {
 	wit 			= 0xFF
 };
 
+enum font {
+	normaal,
+	cursief,
+	vet
+
+};
+
 
 uint8_t getData(void);
 uint8_t stringSplit(char* data, char *delimiter, char **dataOut, uint8_t *dataCount);
@@ -77,6 +84,7 @@ uint8_t fillStruct(char** data, uint8_t dataCount);
 uint8_t getType(char* data, struct fillStructure* flags);
 uint8_t getColor(char* data, uint8_t *colorcode);
 uint8_t stringToInt(char* stringValue, uint16_t* intValue, uint16_t minAllowedVal, uint16_t maxAllowedVal);
+uint8_t getFont(char* data, uint16_t *fontCode);
 
 void printCommandStruct(struct scriptStructure* commandBuffer);
 

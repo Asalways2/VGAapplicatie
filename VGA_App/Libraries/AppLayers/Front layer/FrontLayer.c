@@ -104,6 +104,9 @@ uint8_t fillStruct(char** data, uint8_t dataCount) {
 			commandBuffer._Y = 0;
 		}
 		if(fillFlags.opt1 != noValue){
+			if(commandBuffer.command == tekst)
+				getFont(data[fillFlags.opt1], &commandBuffer.opt1);
+			else
 			stringToInt(data[fillFlags.opt1],&commandBuffer.opt1, 0, 65535);
 		}
 		else{
@@ -134,7 +137,7 @@ uint8_t fillStruct(char** data, uint8_t dataCount) {
 			debugPuts("\r\nBuffer full.\r\n");
 		}
 	}
-	//printCommandStruct(&commandStorage[commandStorageCounter-1]);
+	printCommandStruct(&commandStorage[commandStorageCounter-1]);
 
 }
 
@@ -212,8 +215,8 @@ uint8_t getType(char* data, struct fillStructure* flags){
 		flags->_X = 3;
 		flags->_Y = 4;
 		flags->opt1 = 5;
-		flags->opt2 = noValue;
-		flags->color = 6;
+		flags->opt2 = 6;
+		flags->color = 7;
 		flags->tekst = noValue;
 		return(driehoek);
 	}
@@ -239,7 +242,7 @@ uint8_t getType(char* data, struct fillStructure* flags){
 		flags->opt2 = noValue;
 		flags->color = 4;
 		flags->tekst = 3;
-		return(bitmap);
+		return(tekst);
 	}
 	else if(!strcmp(data, "clearscherm")){
 		flags->command = 0;
@@ -346,7 +349,22 @@ uint8_t getColor(char* data, uint8_t *colorcode){
 	return(0);
 }
 
-
+uint8_t getFont(char* data, uint16_t *fontCode) {
+	if(!strcmp(data, "norm")) {
+		*fontCode = normaal;
+		}
+	else if(!strcmp(data, "vet")){
+		*fontCode = vet;
+		}
+	else if(!strcmp(data, "cursief")){
+		*fontCode = cursief;
+		}
+	else{
+		*fontCode = normaal;
+	return(1); //errorcode
+	}
+	return(0);
+}
 
 
 

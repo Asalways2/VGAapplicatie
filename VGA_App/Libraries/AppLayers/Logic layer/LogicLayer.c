@@ -29,10 +29,11 @@ int i = 0;
 					storage->color);
 			break;
 		case driehoek:
-
+			DrawTriangle(storage->X, storage->Y, storage->_X, storage->_Y,
+					storage->opt1, storage->opt2, storage->color);
 			break;
 		case tekst:
-
+			Drawtext(storage->tekst, storage->X, storage->Y, storage->color, storage->opt1);
 			break;
 		case bitmap:
 			Drawbitmap(storage->X, storage->Y, storage->opt1);
