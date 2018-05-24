@@ -27,32 +27,42 @@ void addError(uint16_t error) {
 
 void printErrors() {
 	int i = 0;
-	for(i=0;i<errorBuffindex;i++){
+	if(!errorBuffindex)
+		UART_puts("OK\r\n\r\n");
+	else {
+		for(i=0;i<errorBuffindex;i++){
 
-		switch(errorBuff[i]) {
+			switch(errorBuff[i]) {
 
-		case tooManyArguments:
-			UART_puts("Too many arguments in command.\r\n");
-			break;
-		case valOutofBounds:
-			UART_puts("Numeric value out of bounds.\r\n");
-			break;
-		case unknownColor:
-			UART_puts("Given color unknown. Black is used.\r\n");
-			break;
-		case unknownFont:
-			UART_puts("Given font is unknown. Normal font is used.\r\n");
-			break;
-		case bufferFull:
-			UART_puts("Input buffer is full. Type execute to empty buffer.\r\n");
-			break;
-		case unknownCommand:
-			UART_puts("Given command is unknown.\r\n");
-			break;
-
-		}
+			case tooManyArguments:
+				UART_puts("Error: Too many arguments in command.\r\n");
+				break;
+			case valOutofBounds:
+				UART_puts("Error: Numeric value out of bounds.\r\n");
+				break;
+			case unknownColor:
+				UART_puts("Warning: Given color unknown. Black is used.\r\n");
+				break;
+			case unknownFont:
+				UART_puts("Warning: Given font is unknown. Normal font is used.\r\n");
+				break;
+			case bufferFull:
+				UART_puts("Error: Input buffer is full. Type execute to empty buffer.\r\n");
+				break;
+			case unknownCommand:
+				UART_puts("Error: Given command is unknown.\r\n");
+				break;
+			case outOfRange:
+				UART_puts("Warning: Figure is out of the display's range.\r\n");
+				break;
+			case bitmapIndex:
+				UART_puts("Error: Unknown bitmap.\r\n");
+				break;
+			}
+	}
 
 	}
+	errorBuffindex=0;
 }
 
 void getData() { //need to add error return type
@@ -186,7 +196,7 @@ void fillStruct(char** data, uint8_t dataCount) {
 			addError(bufferFull);
 		}
 	}
-	else{
+	else if (type != execute){
 		addError(unknownCommand);
 	}
 	printCommandStruct(&commandStorage[commandStorageCounter-1]);

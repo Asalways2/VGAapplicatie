@@ -47,7 +47,9 @@ enum errorcodes {
 	unknownColor,
 	unknownFont,
 	bufferFull,
-	unknownCommand
+	unknownCommand,
+	outOfRange = 100,
+	bitmapIndex
 };
 
 enum scriptcommands {
@@ -95,6 +97,9 @@ uint8_t getType(char* data, struct fillStructure* flags);
 uint8_t getColor(char* data, uint8_t *colorcode);
 uint8_t stringToInt(char* stringValue, uint16_t* intValue, uint16_t minAllowedVal, uint16_t maxAllowedVal);
 uint8_t getFont(char* data, uint16_t *fontCode);
+
+void addError(uint16_t error);
+void printErrors();
 
 void printCommandStruct(struct scriptStructure* commandBuffer);
 

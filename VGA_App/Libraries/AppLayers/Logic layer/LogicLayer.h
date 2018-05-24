@@ -11,15 +11,17 @@
 
 void executeScript(struct scriptStructure* storage, uint8_t dataSize);
 
+extern void addError(uint16_t error);
+
 extern void UB_VGA_FillScreen(uint8_t color);
-extern void DrawLine(int16_t x,int16_t y,int16_t x1, int16_t y1, int8_t color, int8_t width);
+extern void DrawLine(uint16_t *DrawError, int16_t x,int16_t y,int16_t x1, int16_t y1, int8_t color, int8_t width);
 extern void DrawLineNeg(int16_t x,int16_t y,int16_t x1, int16_t y1, uint8_t color, int8_t width);
 extern void DrawLinePos(int16_t x,int16_t y,int16_t x1, int16_t y1, uint8_t color, int8_t width);
-extern void DrawRect(int16_t x,int16_t y,int16_t x1, int16_t y1, int8_t color);
-extern void DrawTriangle(int16_t x, int16_t y, int16_t x1, int16_t y1, int16_t x2, int16_t y2, int8_t color);
-extern void DrawEllips(int16_t x,int16_t y,int16_t x1, int16_t y1, int8_t color);
-extern void Drawbitmap(int16_t x,int16_t y,int16_t sel);
-extern void Drawtext(char* tekst, int16_t x,int16_t y, uint8_t color, uint8_t style);
-uint8_t drawchar(char symbol, int16_t x,int16_t y, uint8_t color, uint8_t style);
+extern void DrawRect(uint16_t *DrawError, int16_t x,int16_t y,int16_t x1, int16_t y1, int8_t color);
+extern void DrawTriangle(uint16_t *DrawError, int16_t x, int16_t y, int16_t x1, int16_t y1, int16_t x2, int16_t y2, int8_t color);
+extern void DrawEllips(uint16_t *DrawError, int16_t x,int16_t y,int16_t x1, int16_t y1, int8_t color);
+extern void Drawbitmap(uint16_t *DrawError, int16_t x,int16_t y,int16_t sel);
+extern void Drawtext(uint16_t *DrawError, char* tekst, int16_t x,int16_t y, uint8_t color, uint8_t style);
+extern uint8_t drawchar(uint16_t *DrawError, char symbol, int16_t x,int16_t y, uint8_t color, uint8_t style);
 
 #endif /* APPLAYERS_LOGIC_LAYER_LOGICLAYER_H_ */
