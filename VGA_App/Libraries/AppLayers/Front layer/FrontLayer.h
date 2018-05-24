@@ -48,6 +48,8 @@ enum errorcodes {
 	unknownFont,
 	bufferFull,
 	unknownCommand,
+	verboseOn,
+	verboseOff,
 	outOfRange = 100,
 	bitmapIndex
 };
@@ -61,7 +63,8 @@ enum scriptcommands {
 	bitmap,
 	clearscherm,
 	wacht,
-	execute
+	execute,
+	verbose
 };
 
 enum colors {

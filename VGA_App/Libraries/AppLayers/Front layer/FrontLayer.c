@@ -13,55 +13,65 @@ char buffer[200];
 
 uint16_t errorBuff[errorBuffSize];
 uint8_t errorBuffindex = 0;
+uint8_t verboseFlag = 1;
 
 struct scriptStructure commandStorage[storageSize];
 uint8_t commandStorageCounter = 0;
 
 
 void addError(uint16_t error) {
-	if(errorBuffindex < errorBuffSize){
-	errorBuff[errorBuffindex] = error;
-	errorBuffindex++;
+	if(verboseFlag){
+		if(errorBuffindex < errorBuffSize){
+			errorBuff[errorBuffindex] = error;
+			errorBuffindex++;
+		}
 	}
 }
 
 void printErrors() {
 	int i = 0;
-	if(!errorBuffindex)
-		UART_puts("OK\r\n\r\n");
-	else {
-		for(i=0;i<errorBuffindex;i++){
+		if(!errorBuffindex && verboseFlag)
+			UART_puts("OK\r\n\r\n");
+		else {
+			for(i=0;i<errorBuffindex;i++){
 
-			switch(errorBuff[i]) {
+				switch(errorBuff[i]) {
 
-			case tooManyArguments:
-				UART_puts("Error: Too many arguments in command.\r\n");
-				break;
-			case valOutofBounds:
-				UART_puts("Error: Numeric value out of bounds.\r\n");
-				break;
-			case unknownColor:
-				UART_puts("Warning: Given color unknown. Black is used.\r\n");
-				break;
-			case unknownFont:
-				UART_puts("Warning: Given font is unknown. Normal font is used.\r\n");
-				break;
-			case bufferFull:
-				UART_puts("Error: Input buffer is full. Type execute to empty buffer.\r\n");
-				break;
-			case unknownCommand:
-				UART_puts("Error: Given command is unknown.\r\n");
-				break;
-			case outOfRange:
-				UART_puts("Warning: Figure is out of the display's range.\r\n");
-				break;
-			case bitmapIndex:
-				UART_puts("Error: Unknown bitmap.\r\n");
-				break;
+				case tooManyArguments:
+					UART_puts("Error: Too many arguments in command.\r\n");
+					break;
+				case valOutofBounds:
+					UART_puts("Error: Numeric value out of bounds.\r\n");
+					break;
+				case unknownColor:
+					UART_puts("Warning: Given color unknown. Black is used.\r\n");
+					break;
+				case unknownFont:
+					UART_puts("Warning: Given font is unknown. Normal font is used.\r\n");
+					break;
+				case bufferFull:
+					UART_puts("Error: Input buffer is full. Type execute to empty buffer.\r\n");
+					break;
+				case unknownCommand:
+					UART_puts("Error: Given command is unknown.\r\n");
+					break;
+				case verboseOn:
+					UART_puts("Info: Verbose is ON!\r\n");
+					break;
+				case verboseOff:
+					UART_puts("Info: Verbose is OFF!\r\n");
+					break;
+				case outOfRange:
+					UART_puts("Warning: Figure is out of the display's range.\r\n");
+					break;
+				case bitmapIndex:
+					UART_puts("Error: Unknown bitmap.\r\n");
+					break;
+				}
 			}
-	}
 
-	}
+		}
+
 	errorBuffindex=0;
 }
 
@@ -196,7 +206,7 @@ void fillStruct(char** data, uint8_t dataCount) {
 			addError(bufferFull);
 		}
 	}
-	else if (type != execute){
+	else if (type != execute && type != verbose){
 		addError(unknownCommand);
 	}
 	printCommandStruct(&commandStorage[commandStorageCounter-1]);
@@ -343,6 +353,27 @@ uint8_t getType(char* data, struct fillStructure* flags){
 		executeScript(commandStorage, commandStorageCounter);
 		commandStorageCounter=0;
 		return(execute);
+	}
+	else if(!strcmp(data, "verbose")){
+		flags->command = noValue;
+		flags->X = noValue;
+		flags->Y = noValue;
+		flags->_X = noValue;
+		flags->_Y = noValue;
+		flags->opt1 = noValue;
+		flags->opt2 = noValue;
+		flags->color = noValue;
+		flags->tekst = noValue;
+		if(verboseFlag) {
+			addError(verboseOff);
+			verboseFlag = 0;
+		}
+		else{
+			verboseFlag = 1;
+			addError(verboseOn);
+		}
+		commandStorageCounter=0;
+		return(verbose);
 	}
 	else{
 		flags->command = noValue;
