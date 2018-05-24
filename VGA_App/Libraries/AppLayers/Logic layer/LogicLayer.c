@@ -12,31 +12,32 @@ uint8_t backgroundColor = zwart;
 
 void executeScript(struct scriptStructure* storage, uint8_t dataSize) {
 int i = 0;
+uint16_t errorValue = 0;
 
 	for (i=0;i<dataSize;i++){
 		switch(storage->command) {
 
 		case lijn:
-			DrawLine(storage->X, storage->Y, storage->_X, storage->_Y,
+			DrawLine(&errorValue, storage->X, storage->Y, storage->_X, storage->_Y,
 					storage->color, storage->opt1);
 			break;
 		case ellips:
-			DrawEllips(storage->X, storage->Y, storage->_X, storage->_Y,
+			DrawEllips(&errorValue, storage->X, storage->Y, storage->_X, storage->_Y,
 					storage->color);
 			break;
 		case rechthoek:
-			DrawRect(storage->X, storage->Y, storage->_X, storage->_Y,
+			DrawRect(&errorValue, storage->X, storage->Y, storage->_X, storage->_Y,
 					storage->color);
 			break;
 		case driehoek:
-			DrawTriangle(storage->X, storage->Y, storage->_X, storage->_Y,
+			DrawTriangle(&errorValue, storage->X, storage->Y, storage->_X, storage->_Y,
 					storage->opt1, storage->opt2, storage->color);
 			break;
 		case tekst:
-			Drawtext(storage->tekst, storage->X, storage->Y, storage->color, storage->opt1);
+			Drawtext(&errorValue, storage->tekst, storage->X, storage->Y, storage->color, storage->opt1);
 			break;
 		case bitmap:
-			Drawbitmap(storage->X, storage->Y, storage->opt1);
+			Drawbitmap(&errorValue, storage->X, storage->Y, storage->opt1);
 			break;
 		case clearscherm:
 			UB_VGA_FillScreen(storage->color);
@@ -49,6 +50,11 @@ int i = 0;
 
 			break;
 		}
+
+		if(errorValue) {
+			addError(errorValue);
+		}
+
 		storage++;
 	}
 }

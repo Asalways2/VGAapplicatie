@@ -8,7 +8,7 @@
 #ifndef MAIN_H_
 #define MAIN_H_
 
-#define DEBUG
+//#define DEBUG
 
 //System library's
 #include "stm32f4xx.h"

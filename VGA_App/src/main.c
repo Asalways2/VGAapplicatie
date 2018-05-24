@@ -59,12 +59,12 @@ SystemInit();
 
 	//DELAY_ms(5000);
 	//checkColors();
-	uint8_t error = 0;
+
 
 	/* Infinite loop */
 	while (1)
 	{
-		error = getData();
+		getData();
 
 
 

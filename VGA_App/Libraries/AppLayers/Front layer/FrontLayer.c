@@ -11,11 +11,51 @@
 
 char buffer[200];
 
+uint16_t errorBuff[errorBuffSize];
+uint8_t errorBuffindex = 0;
+
 struct scriptStructure commandStorage[storageSize];
 uint8_t commandStorageCounter = 0;
 
 
-uint8_t getData() { //need to add error return type
+void addError(uint16_t error) {
+	if(errorBuffindex < errorBuffSize){
+	errorBuff[errorBuffindex] = error;
+	errorBuffindex++;
+	}
+}
+
+void printErrors() {
+	int i = 0;
+	for(i=0;i<errorBuffindex;i++){
+
+		switch(errorBuff[i]) {
+
+		case tooManyArguments:
+			UART_puts("Too many arguments in command.\r\n");
+			break;
+		case valOutofBounds:
+			UART_puts("Numeric value out of bounds.\r\n");
+			break;
+		case unknownColor:
+			UART_puts("Given color unknown. Black is used.\r\n");
+			break;
+		case unknownFont:
+			UART_puts("Given font is unknown. Normal font is used.\r\n");
+			break;
+		case bufferFull:
+			UART_puts("Input buffer is full. Type execute to empty buffer.\r\n");
+			break;
+		case unknownCommand:
+			UART_puts("Given command is unknown.\r\n");
+			break;
+
+		}
+
+	}
+}
+
+void getData() { //need to add error return type
 
 	char *data[argumentBufSize]; //see Frontlayer.h
 	uint8_t dataCount;
@@ -31,9 +71,9 @@ uint8_t getData() { //need to add error return type
 		fillStruct(data, dataCount);
 	}
 	else{
-		debugPuts("Too many arguments.");
+		addError(tooManyArguments);
 	}
-
+	printErrors();
 }
 
 
@@ -70,7 +110,7 @@ uint8_t stringToInt(char* stringValue, uint16_t* intValue, uint16_t minAllowedVa
 }
 
 
-uint8_t fillStruct(char** data, uint8_t dataCount) {
+void fillStruct(char** data, uint8_t dataCount) {
 	struct scriptStructure commandBuffer;
 	struct fillStructure fillFlags;
 
@@ -80,46 +120,55 @@ uint8_t fillStruct(char** data, uint8_t dataCount) {
 	if(fillFlags.command != noValue) {
 		commandBuffer.command = type;
 		if(fillFlags.X != noValue) {
-		stringToInt(data[fillFlags.X],&commandBuffer.X, 0, 65535);
+			if(stringToInt(data[fillFlags.X],&commandBuffer.X, 0, 65535))
+				addError(valOutofBounds);
 		}
 		else{
 			commandBuffer.X = 0;
 		}
 		if(fillFlags.Y != noValue){
-			stringToInt(data[fillFlags.Y],&commandBuffer.Y, 0, 65535);
+			if(stringToInt(data[fillFlags.Y],&commandBuffer.Y, 0, 65535))
+				addError(valOutofBounds);
 		}
 		else{
 			commandBuffer.Y = 0;
 		}
 		if(fillFlags._X != noValue){
-			stringToInt(data[fillFlags._X],&commandBuffer._X, 0, 65535);
+			if(stringToInt(data[fillFlags._X],&commandBuffer._X, 0, 65535))
+				addError(valOutofBounds);
 		}
 		else{
 			commandBuffer._X = 0;
 		}
 		if(fillFlags._Y != noValue){
-			stringToInt(data[fillFlags._Y],&commandBuffer._Y, 0, 65535);
+			if(stringToInt(data[fillFlags._Y],&commandBuffer._Y, 0, 65535))
+				addError(valOutofBounds);
 		}
 		else{
 			commandBuffer._Y = 0;
 		}
 		if(fillFlags.opt1 != noValue){
-			if(commandBuffer.command == tekst)
-				getFont(data[fillFlags.opt1], &commandBuffer.opt1);
+			if(commandBuffer.command == tekst){
+				if(getFont(data[fillFlags.opt1], &commandBuffer.opt1))
+					addError(unknownFont);
+			}
 			else
-			stringToInt(data[fillFlags.opt1],&commandBuffer.opt1, 0, 65535);
+				if(stringToInt(data[fillFlags.opt1],&commandBuffer.opt1, 0, 65535))
+					addError(valOutofBounds);
 		}
 		else{
 			commandBuffer.opt1 = 0;
 		}
 		if(fillFlags.opt2 != noValue){
-			stringToInt(data[fillFlags.opt2],&commandBuffer.opt2, 0, 65535);
+			if(stringToInt(data[fillFlags.opt2],&commandBuffer.opt2, 0, 65535))
+				addError(valOutofBounds);
 		}
 		else{
 			commandBuffer.opt2 = 0;
 		}
 		if(fillFlags.color != noValue){
-			getColor(data[fillFlags.color], &commandBuffer.color);
+			if(getColor(data[fillFlags.color], &commandBuffer.color))
+				addError(unknownColor);
 		}
 		else{
 			commandBuffer.color = 0;
@@ -134,8 +183,11 @@ uint8_t fillStruct(char** data, uint8_t dataCount) {
 			commandStorageCounter++;
 		}
 		else{
-			debugPuts("\r\nBuffer full.\r\n");
+			addError(bufferFull);
 		}
+	}
+	else{
+		addError(unknownCommand);
 	}
 	printCommandStruct(&commandStorage[commandStorageCounter-1]);
 
@@ -361,7 +413,7 @@ uint8_t getFont(char* data, uint16_t *fontCode) {
 		}
 	else{
 		*fontCode = normaal;
-	return(1); //errorcode
+		return(1); //errorcode
 	}
 	return(0);
 }

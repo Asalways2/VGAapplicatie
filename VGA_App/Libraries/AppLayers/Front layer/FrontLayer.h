@@ -15,6 +15,7 @@
 #define argumentBufSize 10
 #define noValue 255
 #define storageSize 50
+#define errorBuffSize 30
 
 struct scriptStructure {
 	uint8_t command;
@@ -38,6 +39,15 @@ struct fillStructure {
 	uint8_t opt2;
 	uint8_t color;
 	uint8_t tekst;
+};
+
+enum errorcodes {
+	tooManyArguments = 1,
+	valOutofBounds,
+	unknownColor,
+	unknownFont,
+	bufferFull,
+	unknownCommand
 };
 
 enum scriptcommands {
@@ -78,9 +88,9 @@ enum font {
 };
 
 
-uint8_t getData(void);
+void getData(void);
 uint8_t stringSplit(char* data, char *delimiter, char **dataOut, uint8_t *dataCount);
-uint8_t fillStruct(char** data, uint8_t dataCount);
+void fillStruct(char** data, uint8_t dataCount);
 uint8_t getType(char* data, struct fillStructure* flags);
 uint8_t getColor(char* data, uint8_t *colorcode);
 uint8_t stringToInt(char* stringValue, uint16_t* intValue, uint16_t minAllowedVal, uint16_t maxAllowedVal);
