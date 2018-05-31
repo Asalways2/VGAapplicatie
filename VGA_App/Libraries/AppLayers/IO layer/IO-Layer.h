@@ -1,7 +1,7 @@
 /**
 * @file IO-Layer.h
 * @brief
-* contains the prototypes and Includes for IO-Layer.c
+* Contains the prototypes and Includes for IO-Layer.c
 *
 *
 * @author Remy van der Pol

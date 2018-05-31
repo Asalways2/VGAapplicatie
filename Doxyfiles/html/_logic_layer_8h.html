@@ -103,9 +103,11 @@ $(document).ready(function(){initNavTree('_logic_layer_8h.html','');});
 Functions</h2></td></tr>
 <tr class="memitem:a445ae2fad573296a096534b785c5f715"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_logic_layer_8h.html#a445ae2fad573296a096534b785c5f715">executeScript</a> (struct <a class="el" href="structscript_structure.html">scriptStructure</a> *storage, uint8_t dataSize)</td></tr>
 <tr class="memdesc:a445ae2fad573296a096534b785c5f715"><td class="mdescLeft">&#160;</td><td class="mdescRight"><br />
- <a href="#a445ae2fad573296a096534b785c5f715">More...</a><br /></td></tr>
+executeScript expects a filled structure with commands for drawing on the screen and wil execute it.  <a href="#a445ae2fad573296a096534b785c5f715">More...</a><br /></td></tr>
 <tr class="separator:a445ae2fad573296a096534b785c5f715"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1862999f0db023f662234d6e12ff05ec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_logic_layer_8h.html#a1862999f0db023f662234d6e12ff05ec">addError</a> (uint16_t error)</td></tr>
+<tr class="memdesc:a1862999f0db023f662234d6e12ff05ec"><td class="mdescLeft">&#160;</td><td class="mdescRight"><br />
+Stores an error of the enum "errorcodes". It adds it to the buffer errorBuff. The amount of errors is tracked using errorBuffindex. Errors will only be stored if verboseFlag = 1.  <a href="#a1862999f0db023f662234d6e12ff05ec">More...</a><br /></td></tr>
 <tr class="separator:a1862999f0db023f662234d6e12ff05ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8afc87fd0f1737d58c7ee92629be9c92"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_logic_layer_8h.html#a8afc87fd0f1737d58c7ee92629be9c92">UB_VGA_FillScreen</a> (uint8_t color)</td></tr>
 <tr class="memdesc:a8afc87fd0f1737d58c7ee92629be9c92"><td class="mdescLeft">&#160;</td><td class="mdescRight"><br />
@@ -175,6 +177,16 @@ Erwin Blankestein </dd></dl>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p><br />
+Stores an error of the enum "errorcodes". It adds it to the buffer errorBuff. The amount of errors is tracked using errorBuffindex. Errors will only be stored if verboseFlag = 1. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">error</td><td>Errorcode of enum "errorcodes" type. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
 </div>
 </div>
@@ -798,8 +810,7 @@ with <a class="el" href="draw_8c.html#a834a12ffd3cbaec0db148cfd0a2ef695" title="
 </div><div class="memdoc">
 
 <p><br />
-</p>
-<p>executeScript expects a filled structure with commands for drawing on the screen and wil execute it.</p>
+executeScript expects a filled structure with commands for drawing on the screen and wil execute it. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">storage</td><td>this parameter expects a filled struct from the sort <a class="el" href="structscript_structure.html">scriptStructure</a> that is defined in <a class="el" href="_front_layer_8h.html" title="contains the prototypes and Includes for FrontLayer ">FrontLayer.h</a> </td></tr>

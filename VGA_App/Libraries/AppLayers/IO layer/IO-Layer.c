@@ -1,7 +1,7 @@
 /**
 * @file IO-Layer.c
 * @brief
-* initializes UART, DELAY and VGA
+* Initializes UART, DELAY and VGA. Adds support for UART and Delay.
 *
 * @author Remy van der Pol
 * @author Erwin Blankestein
@@ -14,11 +14,20 @@ char string[100];
 int charcounter = 0;
 
 
+/**
+*@brief \n
+*Link to IO_API to initialize the VGA screen.
+*@return void
+*/
 void VGA_init() {
 	UB_VGA_Screen_Init();
 }
 
-
+/**
+*@brief \n
+*Initializes the UART communication
+*@return void
+*/
 void UARTinit(void)
 {
 
@@ -69,6 +78,12 @@ USART_Cmd(USART2, ENABLE);
 
 }
 
+/**
+*@brief \n
+*Writes a character to the Serial port.
+*@param c		Char to print.
+*@return void
+*/
 void UART_putchar(char c)
 {
 		while(USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET); // Wait for Empty
@@ -76,6 +91,12 @@ void UART_putchar(char c)
 
 }
 
+/**
+*@brief \n
+*Writes a String to the Serial port.
+*@param s		Pointer to String to print.
+*@return void
+*/
 void UART_puts(char *s)
 {
 	volatile unsigned int i;
@@ -88,14 +109,24 @@ void UART_puts(char *s)
 }
 
 
-// Stuurt meegegeven getal uit op de UART
-
+/**
+*@brief \n
+*Writes an integer to the Serial port.
+*@param num		Number to print.
+*@return void
+*/
 void UART_putint(unsigned int num)
 {
     UART_putnum(num, 10);
 }
 
-// Stuurt meegegeven getal uit op de UART in het aangegeven getallenstelsel
+/**
+*@brief \n
+*Writes an number to the Serial port.
+*@param num		Number to print.
+*@param deel	Base number (16 for HEX ,2 for binary, etc..).
+*@return void
+*/
 void UART_putnum(unsigned int num, unsigned char deel)
 {
     static unsigned char chars[16] = "0123456789ABCDEF";
@@ -132,9 +163,12 @@ void UART_putnum(unsigned int num, unsigned char deel)
     }
 }
 
-// Ontvang een karakter via de UART
-// niet echt nodig als routine maar als wrapper voor compatabiliteit. Let op geen -1 als er geen char is ontvangen!
 
+/**
+*@brief \n
+*Reads a character from the UART.
+*@return char Received character
+*/
 char UART_readChar(void)
 {
     char uart_char = -1;
@@ -144,11 +178,13 @@ char UART_readChar(void)
 }
 
 
-// void UART_gets
-// args: char *readbuffer
-//       int   echo, when TRUE, send read-char to UART
-// remark: ARM sends -1 if buffer is empty
-//         LF is cleared if set in terminal-program
+/**
+*@brief \n
+*Reads a String from the UART. Waits for CR before it returns.
+*@param s		Pointer to store the String in.
+*@param echo	Flag, Set to 1 to mirror the input by sending it to the output.
+*@return void
+*/
 void UART_read(char *s, int echo)
 {
 	while (TRUE)
@@ -173,11 +209,20 @@ void UART_read(char *s, int echo)
 	}
 }
 
+/**
+*@brief \n
+*Checks if there is data waiting to be read.
+*@return dataAvailable 1 if yes, 0 if no.
+*/
 uint8_t UART_dataAvailable() {
 	return(USART_GetFlagStatus(USART2, USART_FLAG_RXNE)); // check for data available
 }
 
-
+/**
+*@brief \n
+*Initializes the delay funcionality by using the systemclock.
+*@return void
+*/
 void DELAY_init(void)
 {
 	RCC_ClocksTypeDef Clocks;
@@ -188,6 +233,12 @@ void DELAY_init(void)
 	D_uS = (G_CLK*1.25)/9000000/2; // Number of instructions in one microsecond, largest rounding error
 }
 
+/**
+*@brief \n
+*Waits for the given amount of time.
+*@param time		Amount of time in uS
+*@return void
+*/
 void DELAY_us(volatile unsigned int time)
 {
     volatile unsigned int i;
@@ -199,6 +250,12 @@ void DELAY_us(volatile unsigned int time)
     }
 }
 
+/**
+*@brief \n
+*Waits for the given amount of time.
+*@param time		Amount of time in mS
+*@return void
+*/
 void DELAY_ms(volatile unsigned int time)
 {
     volatile unsigned int i;
@@ -210,6 +267,12 @@ void DELAY_ms(volatile unsigned int time)
     }
 }
 
+/**
+*@brief \n
+*Waits for the given amount of time.
+*@param time		Amount of time in S
+*@return void
+*/
 void DELAY_s(volatile unsigned int time)
 {
     volatile unsigned int i;

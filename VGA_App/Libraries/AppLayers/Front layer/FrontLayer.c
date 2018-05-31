@@ -22,6 +22,13 @@ struct scriptStructure commandStorage[storageSize];
 uint8_t commandStorageCounter = 0;
 
 
+/**
+*@brief \n
+*Stores an error of the enum "errorcodes". It adds it to the buffer errorBuff. The amount of errors is tracked using errorBuffindex.
+*Errors will only be stored if verboseFlag = 1.
+*@param error		Errorcode of enum "errorcodes" type.
+*@return void
+*/
 void addError(uint16_t error) {
 	if(verboseFlag){
 		if(errorBuffindex < errorBuffSize){
@@ -31,6 +38,12 @@ void addError(uint16_t error) {
 	}
 }
 
+
+/**
+*@brief \n
+*Prints all the errors available in errorBuff to the serial port.
+*@return void
+*/
 void printErrors() {
 	int i = 0;
 		if(!errorBuffindex && verboseFlag)
@@ -78,7 +91,13 @@ void printErrors() {
 	errorBuffindex=0;
 }
 
-void getData() { //need to add error return type
+
+/**
+*@brief \n
+*Reads data from the serial port, and processes the data.							
+*@return void
+*/
+void getData() {
 
 	char *data[argumentBufSize]; //see Frontlayer.h
 	uint8_t dataCount;
@@ -99,7 +118,15 @@ void getData() { //need to add error return type
 	printErrors();
 }
 
-
+/**
+*@brief \n
+*Splits a String using a delimiter.
+*@param data		Pointer to the String that needs to be seperated.
+*@param delimiter	Pointer to the String which holds the delimiter(s) used for splitting the String.
+*@param dataOut		Pointer array to store the seperated Strings in.
+*@param dataCount	Pointer to an integer to store the amount of Strings in dataOut after the seperation of data.
+*@return errorcode	0 if succesfull, 1 if there is more data than the argumentBufSize allows.
+*/
 uint8_t stringSplit(char* data, char *delimiter, char **dataOut, uint8_t *dataCount) {
 	char* cPtr;
 	int i = 0;
@@ -117,6 +144,15 @@ uint8_t stringSplit(char* data, char *delimiter, char **dataOut, uint8_t *dataCo
 	return(0);
 }
 
+/**
+*@brief \n
+*Converts a String holding a numeric value to an integer, respecting the size of the integer.
+*@param stringValue		String to convert.
+*@param intValue		Integer pointer for storing the result.
+*@param minAllowedVal	Minimum allowed value of intValue.
+*@param maxAllowedVal	Maximum allowed value of intValue.
+*@return errorcode		0 if succesfull, 1 if the numer doesn't respect the minAllowedVal or the maxAllowedVal.
+*/
 uint8_t stringToInt(char* stringValue, uint16_t* intValue, uint16_t minAllowedVal, uint16_t maxAllowedVal){
 	char* charbuf[100];
 	long int value;
@@ -128,11 +164,17 @@ uint8_t stringToInt(char* stringValue, uint16_t* intValue, uint16_t minAllowedVa
 	return(0);
 	}
 	else {
-	return(1); //error value
+	return(1);
 	}
 }
 
-
+/**
+*@brief \n
+*Fills the structure commandStorage with data using the index fillStructure which it gets from getType();
+*@param data		Pointer array to the command data.
+*@param dataCount	Amount of arguments inside data.
+*@return void
+*/
 void fillStruct(char** data, uint8_t dataCount) {
 	struct scriptStructure commandBuffer;
 	struct fillStructure fillFlags;
@@ -216,6 +258,13 @@ void fillStruct(char** data, uint8_t dataCount) {
 
 }
 
+
+/**
+*@brief \n
+*Prints the given structureData. For debugging purposes (only works when DEBUG is defined);
+*@param commandBuffer		Pointer to the structureData to print.
+*@return void
+*/
 void printCommandStruct(struct scriptStructure* commandBuffer){
 
 	debugPuts("\r\n\r\nX:");
@@ -245,6 +294,14 @@ void printCommandStruct(struct scriptStructure* commandBuffer){
 
 }
 
+
+/**
+*@brief \n
+*Configures an structure to hold the index of the given command. This function also executes the commands "execute" and "verbose".
+*@param data		Pointer to the first command.
+*@param flags		Pointer to the index fillStructure.
+*@return commandcode	Code is of enum type scriptcommands.
+*/
 uint8_t getType(char* data, struct fillStructure* flags){
 
 	if(!strcmp(data, "lijn")) {
@@ -392,6 +449,15 @@ uint8_t getType(char* data, struct fillStructure* flags){
 	}
 }
 
+
+
+/**
+*@brief \n
+*Converts given String holding the requested color to an number of enum type colors.
+*@param data		Pointer holding the String with the requested color.
+*@param colorcode	Pointer to write the colorcode of enum type colors in.
+*@return errorcode	Returns 0 if succesfull, 1 if color not defined (colorcode will be Black).
+*/
 uint8_t getColor(char* data, uint8_t *colorcode){
 	if(!strcmp(data, "zwart")) {
 		*colorcode = zwart;
@@ -445,6 +511,14 @@ uint8_t getColor(char* data, uint8_t *colorcode){
 	return(0);
 }
 
+
+/**
+*@brief \n
+*Converts given String holding the requested font to an number of enum type font.
+*@param data		Pointer holding the String with the requested font.
+*@param fontCode	Pointer to write the fontCode of enum type font in.
+*@return errorcode	Returns 0 if succesfull, 1 if font not defined (fontCode will be normaal).
+*/
 uint8_t getFont(char* data, uint16_t *fontCode) {
 	if(!strcmp(data, "norm")) {
 		*fontCode = normaal;

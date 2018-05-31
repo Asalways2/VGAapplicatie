@@ -13,11 +13,9 @@
 
 /**
 *@brief \n
-*
 *executeScript expects a filled structure with commands for drawing on the screen and wil execute it.
-*
-*@param storage									this parameter expects a filled struct  from the sort scriptStructure that is defined in FrontLayer.h
-*@param dataSize								number of commands
+*@param storage		this parameter expects a filled struct  from the sort scriptStructure that is defined in FrontLayer.h
+*@param dataSize 	number of commands
 *@return void
 */
 void executeScript(struct scriptStructure* storage, uint8_t dataSize) {

@@ -188,24 +188,45 @@ Enumerations</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a310b8fc6ebf6c4f5a5c24a72ac0e177a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_front_layer_8h.html#a310b8fc6ebf6c4f5a5c24a72ac0e177a">getData</a> (void)</td></tr>
+<tr class="memdesc:a310b8fc6ebf6c4f5a5c24a72ac0e177a"><td class="mdescLeft">&#160;</td><td class="mdescRight"><br />
+Reads data from the serial port, and processes the data. <br />
+  <a href="#a310b8fc6ebf6c4f5a5c24a72ac0e177a">More...</a><br /></td></tr>
 <tr class="separator:a310b8fc6ebf6c4f5a5c24a72ac0e177a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8553ead62d2b3a49a959ce21e6d6d4ec"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_front_layer_8h.html#a8553ead62d2b3a49a959ce21e6d6d4ec">stringSplit</a> (char *data, char *delimiter, char **dataOut, uint8_t *dataCount)</td></tr>
+<tr class="memdesc:a8553ead62d2b3a49a959ce21e6d6d4ec"><td class="mdescLeft">&#160;</td><td class="mdescRight"><br />
+Splits a String using a delimiter.  <a href="#a8553ead62d2b3a49a959ce21e6d6d4ec">More...</a><br /></td></tr>
 <tr class="separator:a8553ead62d2b3a49a959ce21e6d6d4ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a470c2f727a2814244fe8da0662357a0b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_front_layer_8h.html#a470c2f727a2814244fe8da0662357a0b">fillStruct</a> (char **data, uint8_t dataCount)</td></tr>
+<tr class="memdesc:a470c2f727a2814244fe8da0662357a0b"><td class="mdescLeft">&#160;</td><td class="mdescRight"><br />
+Fills the structure commandStorage with data using the index <a class="el" href="structfill_structure.html">fillStructure</a> which it gets from <a class="el" href="_front_layer_8c.html#a31cd2a10e622b27553cbd46c47971bc0" title=" Configures an structure to hold the index of the given command. This function also executes the comm...">getType()</a>;  <a href="#a470c2f727a2814244fe8da0662357a0b">More...</a><br /></td></tr>
 <tr class="separator:a470c2f727a2814244fe8da0662357a0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a31cd2a10e622b27553cbd46c47971bc0"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_front_layer_8h.html#a31cd2a10e622b27553cbd46c47971bc0">getType</a> (char *data, struct <a class="el" href="structfill_structure.html">fillStructure</a> *flags)</td></tr>
+<tr class="memdesc:a31cd2a10e622b27553cbd46c47971bc0"><td class="mdescLeft">&#160;</td><td class="mdescRight"><br />
+Configures an structure to hold the index of the given command. This function also executes the commands "execute" and "verbose".  <a href="#a31cd2a10e622b27553cbd46c47971bc0">More...</a><br /></td></tr>
 <tr class="separator:a31cd2a10e622b27553cbd46c47971bc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc6d3f73d989b1587458776307dbf9a7"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_front_layer_8h.html#afc6d3f73d989b1587458776307dbf9a7">getColor</a> (char *data, uint8_t *colorcode)</td></tr>
+<tr class="memdesc:afc6d3f73d989b1587458776307dbf9a7"><td class="mdescLeft">&#160;</td><td class="mdescRight"><br />
+Converts given String holding the requested color to an number of enum type colors.  <a href="#afc6d3f73d989b1587458776307dbf9a7">More...</a><br /></td></tr>
 <tr class="separator:afc6d3f73d989b1587458776307dbf9a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a62acd93a9ea6b923ce508396c6921de9"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_front_layer_8h.html#a62acd93a9ea6b923ce508396c6921de9">stringToInt</a> (char *stringValue, uint16_t *intValue, uint16_t minAllowedVal, uint16_t maxAllowedVal)</td></tr>
+<tr class="memdesc:a62acd93a9ea6b923ce508396c6921de9"><td class="mdescLeft">&#160;</td><td class="mdescRight"><br />
+Converts a String holding a numeric value to an integer, respecting the size of the integer.  <a href="#a62acd93a9ea6b923ce508396c6921de9">More...</a><br /></td></tr>
 <tr class="separator:a62acd93a9ea6b923ce508396c6921de9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a22010cf6e1bd747ca7fc06c28e833169"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_front_layer_8h.html#a22010cf6e1bd747ca7fc06c28e833169">getFont</a> (char *data, uint16_t *fontCode)</td></tr>
+<tr class="memdesc:a22010cf6e1bd747ca7fc06c28e833169"><td class="mdescLeft">&#160;</td><td class="mdescRight"><br />
+Converts given String holding the requested font to an number of enum type font.  <a href="#a22010cf6e1bd747ca7fc06c28e833169">More...</a><br /></td></tr>
 <tr class="separator:a22010cf6e1bd747ca7fc06c28e833169"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1862999f0db023f662234d6e12ff05ec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_front_layer_8h.html#a1862999f0db023f662234d6e12ff05ec">addError</a> (uint16_t error)</td></tr>
+<tr class="memdesc:a1862999f0db023f662234d6e12ff05ec"><td class="mdescLeft">&#160;</td><td class="mdescRight"><br />
+Stores an error of the enum "errorcodes". It adds it to the buffer errorBuff. The amount of errors is tracked using errorBuffindex. Errors will only be stored if verboseFlag = 1.  <a href="#a1862999f0db023f662234d6e12ff05ec">More...</a><br /></td></tr>
 <tr class="separator:a1862999f0db023f662234d6e12ff05ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a34dc28561aa35bb397e38ba32b171169"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_front_layer_8h.html#a34dc28561aa35bb397e38ba32b171169">printErrors</a> ()</td></tr>
+<tr class="memdesc:a34dc28561aa35bb397e38ba32b171169"><td class="mdescLeft">&#160;</td><td class="mdescRight"><br />
+Prints all the errors available in errorBuff to the serial port.  <a href="#a34dc28561aa35bb397e38ba32b171169">More...</a><br /></td></tr>
 <tr class="separator:a34dc28561aa35bb397e38ba32b171169"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8fa4be44f8db957cbe847bc524837169"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_front_layer_8h.html#a8fa4be44f8db957cbe847bc524837169">printCommandStruct</a> (struct <a class="el" href="structscript_structure.html">scriptStructure</a> *commandBuffer)</td></tr>
+<tr class="memdesc:a8fa4be44f8db957cbe847bc524837169"><td class="mdescLeft">&#160;</td><td class="mdescRight"><br />
+Prints the given structureData. For debugging purposes (only works when DEBUG is defined);  <a href="#a8fa4be44f8db957cbe847bc524837169">More...</a><br /></td></tr>
 <tr class="separator:a8fa4be44f8db957cbe847bc524837169"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -404,6 +425,16 @@ Erwin Blankestein </dd></dl>
       </table>
 </div><div class="memdoc">
 
+<p><br />
+Stores an error of the enum "errorcodes". It adds it to the buffer errorBuff. The amount of errors is tracked using errorBuffindex. Errors will only be stored if verboseFlag = 1. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">error</td><td>Errorcode of enum "errorcodes" type. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
 </div>
 </div>
 <a id="a470c2f727a2814244fe8da0662357a0b"></a>
@@ -431,6 +462,17 @@ Erwin Blankestein </dd></dl>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p><br />
+Fills the structure commandStorage with data using the index <a class="el" href="structfill_structure.html">fillStructure</a> which it gets from <a class="el" href="_front_layer_8c.html#a31cd2a10e622b27553cbd46c47971bc0" title=" Configures an structure to hold the index of the given command. This function also executes the comm...">getType()</a>; </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>Pointer array to the command data. </td></tr>
+    <tr><td class="paramname">dataCount</td><td>Amount of arguments inside data. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
 </div>
 </div>
@@ -460,6 +502,17 @@ Erwin Blankestein </dd></dl>
       </table>
 </div><div class="memdoc">
 
+<p><br />
+Converts given String holding the requested color to an number of enum type colors. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>Pointer holding the String with the requested color. </td></tr>
+    <tr><td class="paramname">colorcode</td><td>Pointer to write the colorcode of enum type colors in. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>errorcode Returns 0 if succesfull, 1 if color not defined (colorcode will be Black). </dd></dl>
+
 </div>
 </div>
 <a id="a310b8fc6ebf6c4f5a5c24a72ac0e177a"></a>
@@ -477,6 +530,11 @@ Erwin Blankestein </dd></dl>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p><br />
+Reads data from the serial port, and processes the data. <br />
+ </p>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
 </div>
 </div>
@@ -506,6 +564,17 @@ Erwin Blankestein </dd></dl>
       </table>
 </div><div class="memdoc">
 
+<p><br />
+Converts given String holding the requested font to an number of enum type font. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>Pointer holding the String with the requested font. </td></tr>
+    <tr><td class="paramname">fontCode</td><td>Pointer to write the fontCode of enum type font in. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>errorcode Returns 0 if succesfull, 1 if font not defined (fontCode will be normaal). </dd></dl>
+
 </div>
 </div>
 <a id="a31cd2a10e622b27553cbd46c47971bc0"></a>
@@ -534,6 +603,17 @@ Erwin Blankestein </dd></dl>
       </table>
 </div><div class="memdoc">
 
+<p><br />
+Configures an structure to hold the index of the given command. This function also executes the commands "execute" and "verbose". </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>Pointer to the first command. </td></tr>
+    <tr><td class="paramname">flags</td><td>Pointer to the index <a class="el" href="structfill_structure.html">fillStructure</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>commandcode Code is of enum type scriptcommands. </dd></dl>
+
 </div>
 </div>
 <a id="a8fa4be44f8db957cbe847bc524837169"></a>
@@ -552,6 +632,16 @@ Erwin Blankestein </dd></dl>
       </table>
 </div><div class="memdoc">
 
+<p><br />
+Prints the given structureData. For debugging purposes (only works when DEBUG is defined); </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">commandBuffer</td><td>Pointer to the structureData to print. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
 </div>
 </div>
 <a id="a34dc28561aa35bb397e38ba32b171169"></a>
@@ -568,6 +658,10 @@ Erwin Blankestein </dd></dl>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p><br />
+Prints all the errors available in errorBuff to the serial port. </p>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
 </div>
 </div>
@@ -609,6 +703,19 @@ Erwin Blankestein </dd></dl>
       </table>
 </div><div class="memdoc">
 
+<p><br />
+Splits a String using a delimiter. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>Pointer to the String that needs to be seperated. </td></tr>
+    <tr><td class="paramname">delimiter</td><td>Pointer to the String which holds the delimiter(s) used for splitting the String. </td></tr>
+    <tr><td class="paramname">dataOut</td><td>Pointer array to store the seperated Strings in. </td></tr>
+    <tr><td class="paramname">dataCount</td><td>Pointer to an integer to store the amount of Strings in dataOut after the seperation of data. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>errorcode 0 if succesfull, 1 if there is more data than the argumentBufSize allows. </dd></dl>
+
 </div>
 </div>
 <a id="a62acd93a9ea6b923ce508396c6921de9"></a>
@@ -648,6 +755,19 @@ Erwin Blankestein </dd></dl>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p><br />
+Converts a String holding a numeric value to an integer, respecting the size of the integer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stringValue</td><td>String to convert. </td></tr>
+    <tr><td class="paramname">intValue</td><td>Integer pointer for storing the result. </td></tr>
+    <tr><td class="paramname">minAllowedVal</td><td>Minimum allowed value of intValue. </td></tr>
+    <tr><td class="paramname">maxAllowedVal</td><td>Maximum allowed value of intValue. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>errorcode 0 if succesfull, 1 if the numer doesn't respect the minAllowedVal or the maxAllowedVal. </dd></dl>
 
 </div>
 </div>
