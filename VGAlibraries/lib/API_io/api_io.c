@@ -1,19 +1,30 @@
-//--------------------------------------------------------------
-// File     : api_io.c
-// CPU      : STM32F4
-// IDE      : Atollic 9.0
-// Module   : GPIO, TIM, MISC, DMA
-// Function : VGA out by GPIO (320x240 Pixel, 8bit color)
-//
-// signals  : PB11      = HSync-Signal
-//            PB12      = VSync-Signal
-//            PE8+PE9   = color Blue
-//            PE10-PE12 = color Green
-//            PE13-PE15 = color red
-//
-// uses     : TIM1, TIM2
-//            DMA2, Channel6, Stream5
-//--------------------------------------------------------------
+/**
+* @file api_io.c
+* @brief
+* functions for initialization vga screen and the fundamental functiong for draw.c UB_VGA_SetPixel
+*
+*
+* @author Remy van der Pol
+* @author Erwin Blankestein\
+*
+* Signals  : PB11      = HSync-Signal
+*            PB12      = VSync-Signal
+*            PE8+PE9   = color Blue
+*            PE10-PE12 = color Green
+*            PE13-PE15 = color red
+*
+*
+* This code uses the following modules:
+*     GPIO, TIM, MISC, DMA
+*  Used hardware:
+*     TIM1, TIM2, DMA2, Channel6, Stream5
+*
+* This code makes a 2D buffer(320*240) this buffer is flushed to the VGA screen
+* and can be filled with UB_VGA_SetPixel().
+*
+*
+*
+*/
 
 
 //--------------------------------------------------------------
@@ -32,9 +43,14 @@ void P_VGA_InitINT(void);
 void P_VGA_InitDMA(void);
 
 
-//--------------------------------------------------------------
-// Init VGA-Module
-//--------------------------------------------------------------
+/**
+*@brief \n
+*
+*UB_VGA_Screen_Init() initialize the hardware for the vga screen and the 2D buffer
+*
+*@param void this function does not take any elements.
+*@return void
+*/
 void UB_VGA_Screen_Init(void)
 {
   uint16_t xp,yp;
@@ -68,10 +84,18 @@ void UB_VGA_Screen_Init(void)
 
 
 
-//--------------------------------------------------------------
-// put one Pixel on the screen with one color
-// Important : the last Pixel+1 from every line must be black (don't know why??)
-//--------------------------------------------------------------
+/**
+*@brief \n
+*
+*UB_VGA_SetPixel() sets a pixel in the 2D array for the VGA screen
+* Setpixel can be used to make you're own draw functions.
+*@param xp         the x coördinate where the pixel be placed
+*@param yp         the y coördinate where the pixel be placed
+*@param color     8 bit color look at *macros* for premade colors
+*
+*
+*@return void
+*/
 void UB_VGA_SetPixel(uint16_t xp, uint16_t yp, uint8_t color)
 {
   if(xp>=VGA_DISPLAY_X) xp=0;
@@ -82,10 +106,13 @@ void UB_VGA_SetPixel(uint16_t xp, uint16_t yp, uint8_t color)
 }
 
 
-//--------------------------------------------------------------
-// interne Funktionen
-// init aller IO-Pins
-//--------------------------------------------------------------
+/**
+*
+*@brief \n
+*<B>PRIVATE FUNCTION</B><br><br>
+*this function is called by UB_VGA_Screen_Init() and initializes all the IO for the VGA<br>
+*Use UB_VGA_Screen_Init()
+*/
 void P_VGA_InitIO(void)
 {
   GPIO_InitTypeDef  GPIO_InitStructure;
@@ -150,11 +177,13 @@ void P_VGA_InitIO(void)
   GPIOB->BSRRL = GPIO_Pin_12;
 }
 
-
-//--------------------------------------------------------------
-// internal Function
-// init Timer
-//--------------------------------------------------------------
+/**
+*
+*@brief \n
+*<B>PRIVATE FUNCTION</B><br><br>
+*this function is called by UB_VGA_Screen_Init() and initializes all the timers for the VGA<br>
+*Use UB_VGA_Screen_Init()
+*/
 void P_VGA_InitTIM(void)
 {
   TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;
@@ -223,10 +252,13 @@ void P_VGA_InitTIM(void)
 
 }
 
-//--------------------------------------------------------------
-// internal Function
-// init Interrupts
-//--------------------------------------------------------------
+/**
+*
+*@brief \n
+*<B>PRIVATE FUNCTION</B><br><br>
+*this function is called by UB_VGA_Screen_Init() and initializes all the interrupts for the VGA<br>
+*Use UB_VGA_Screen_Init()
+*/
 void P_VGA_InitINT(void)
 {
   NVIC_InitTypeDef NVIC_InitStructure;
@@ -264,10 +296,13 @@ void P_VGA_InitINT(void)
 }
 
 
-//--------------------------------------------------------------
-// internal Function
-// init DMA
-//--------------------------------------------------------------
+/**
+*
+*@brief \n
+*<B>PRIVATE FUNCTION</B><br><br>
+*this function is called by UB_VGA_Screen_Init() and initializes all the DMA for the VGA<br>
+*Use UB_VGA_Screen_Init()
+*/
 void P_VGA_InitDMA(void)
 {
   DMA_InitTypeDef DMA_InitStructure;

@@ -1,9 +1,12 @@
-/*
- * FrontLayer.c
- *
- *  Created on: 3 mei 2018
- *      Author: Remyv
- */
+/**
+* @file FrontLayer.c
+* @brief
+* Handles commands and error's
+*
+* @author Remy van der Pol
+* @author Erwin Blankestein
+*
+*/
 
 #include "main.h"
 
@@ -458,6 +461,3 @@ uint8_t getFont(char* data, uint16_t *fontCode) {
 	}
 	return(0);
 }
-
-
-

@@ -1,14 +1,17 @@
-/*
- * LogicLayer.h
- *
- *  Created on: 3 mei 2018
- *      Author: Remyv
- */
-
+/**
+* @file Logiclayer.h
+* @brief
+* contains the prototypes and Includes for logiclayer.c
+*
+*
+* @author Remy van der Pol
+* @author Erwin Blankestein
+*
+*/
 #ifndef APPLAYERS_LOGIC_LAYER_LOGICLAYER_H_
 #define APPLAYERS_LOGIC_LAYER_LOGICLAYER_H_
 
-
+#include "draw.h"
 void executeScript(struct scriptStructure* storage, uint8_t dataSize);
 
 extern void addError(uint16_t error);

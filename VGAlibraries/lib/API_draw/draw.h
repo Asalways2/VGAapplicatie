@@ -17,7 +17,10 @@
 #include "FontBold.h"
 
 uint16_t DrawError = 0;
-
+/**
+*@brief \n
+* in this variable the error's are stored
+*/
 enum DrawErrors {
 	OUTOFRANGE = 100,
 	BITMAPINDEX

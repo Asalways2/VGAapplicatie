@@ -1,9 +1,12 @@
-/*
- * FrontLayer.h
- *
- *  Created on: 3 mei 2018
- *      Author: Remyv
- */
+/**
+* @file FrontLayer.h
+* @brief
+* contains the prototypes and Includes for FrontLayer
+*
+* @author Remy van der Pol
+* @author Erwin Blankestein
+*
+*/
 
 #ifndef APPLAYERS_FRONT_LAYER_FRONTLAYER_H_
 #define APPLAYERS_FRONT_LAYER_FRONTLAYER_H_

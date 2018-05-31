@@ -1,9 +1,12 @@
-/*
- * IO-Layer.c
- *
- *  Created on: 3 mei 2018
- *      Author: Remyv
- */
+/**
+* @file IO-Layer.c
+* @brief
+* initializes UART, DELAY and VGA
+*
+* @author Remy van der Pol
+* @author Erwin Blankestein
+*
+*/
 
 #include "main.h"
 

@@ -1,15 +1,25 @@
-/*
- * LogicLayer.c
- *
- *  Created on: 3 mei 2018
- *      Author: Remyv
- */
-
-
+/**
+* @file Logiclayer.c
+*
+* @brief
+* This file is the linker to Draw.h and contans the function to execute the script from the front layer
+*
+*
+* @author Remy van der Pol
+* @author Erwin Blankestein
+*
+*/
 #include "main.h"
 
-uint8_t backgroundColor = zwart;
-
+/**
+*@brief \n
+*
+*executeScript expects a filled structure with commands for drawing on the screen and wil execute it.
+*
+*@param storage									this parameter expects a filled struct  from the sort scriptStructure that is defined in FrontLayer.h
+*@param dataSize								number of commands
+*@return void
+*/
 void executeScript(struct scriptStructure* storage, uint8_t dataSize) {
 int i = 0;
 uint16_t errorValue = 0;
@@ -41,7 +51,6 @@ uint16_t errorValue = 0;
 			break;
 		case clearscherm:
 			UB_VGA_FillScreen(storage->color);
-			backgroundColor = storage->color;
 			break;
 		case wacht:
 			DELAY_ms(storage->opt1);

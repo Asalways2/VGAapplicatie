@@ -1,7 +1,13 @@
-//--------------------------------------------------------------
-// File     : stm32_ub_vga_screen.h
-//--------------------------------------------------------------
-
+/**
+* @file api_io.h
+* @brief
+* all the macros for the io are here, with the macro's for the colors
+*
+*
+* @author Remy van der Pol
+* @author Erwin Blankestein\
+*
+*/
 //--------------------------------------------------------------
 #ifndef __STM32F4_UB_VGA_SCREEN_H
 #define __STM32F4_UB_VGA_SCREEN_H

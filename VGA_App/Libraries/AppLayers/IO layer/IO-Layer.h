@@ -1,9 +1,13 @@
-/*
- * IO-Layer.h
- *
- *  Created on: 3 mei 2018
- *      Author: Remyv
- */
+/**
+* @file IO-Layer.h
+* @brief
+* contains the prototypes and Includes for IO-Layer.c
+*
+*
+* @author Remy van der Pol
+* @author Erwin Blankestein
+*
+*/
 
 #ifndef APPLAYERS_IO_LAYER_IO_LAYER_H_
 #define APPLAYERS_IO_LAYER_IO_LAYER_H_
