@@ -29,5 +29,10 @@
 			<type>2</type>
 			<locationURI>PARENT-2-PROJECT_LOC/VGAlibraries/Library_Files</locationURI>
 		</link>
+		<link>
+			<name>Libraries/lib</name>
+			<type>2</type>
+			<locationURI>PARENT-1-PROJECT_LOC/VGAlibraries/lib</locationURI>
+		</link>
 	</linkedResources>
 </projectDescription>
