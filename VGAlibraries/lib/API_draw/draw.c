@@ -303,8 +303,19 @@ uint8_t drawchar(uint16_t *DrawError,char symbol, int16_t x,int16_t y, uint8_t c
 	 }
 	 return(fontInfo[i][2]);
 }
+/**
+*@brief \n
+*with Drawtext()  you can draw text on the screen
+*@param DrawError is a pointer to a uint16_t. the function wil write a error to this place if a error occurs
+*@param tekst     the text is a char array which will be written on te screen
+*@param x         the x coördinate for the first point of the text
+*@param y         the y coördinate for the first point of the text
+*@param color     8 bit color look at *macros* for premade colors
+*@param style     the style of the text 0 for Normal 1 for bold 2 for cursive
 
-
+*
+*@return void
+*/
 void Drawtext(uint16_t *DrawError,char* tekst, int16_t x,int16_t y, uint8_t color, uint8_t style) {
 int spacing = 0;
 int line = 0;
@@ -319,7 +330,17 @@ int line = 0;
 	}
 
 }
+/**
+*@brief \n
+*with Drawbitmap() you can write bitmapst on screen. all the bitmaps have a dimension of 50x50 pixels
+*@param DrawError is a pointer to a uint16_t. the function wil write a error to this place if a error occurs
+*@param x         the x coördinate for the first point of the text
+*@param y         the y coördinate for the first point of the text
+*@param sel       with sel you can select the bitmap that are stored in bitmap.h
 
+*
+*@return void
+*/
 void Drawbitmap(uint16_t *DrawError,int16_t x,int16_t y,int16_t sel)
 {
 	if(sel > 2)
