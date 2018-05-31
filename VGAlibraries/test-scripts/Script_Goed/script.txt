@@ -1,0 +1,56 @@
+clearscherm,zwart
+execute
+lijn,1,1,100,100,4,rood
+execute
+lijn,100,1,100,1,4,groen
+execute
+ellips,200,200,30,40,blauw
+execute
+ellips,300,300,40,30,lichtrood
+execute
+clearscherm,wit
+execute
+rechthoek,10,10,300,200,zwart
+execute
+rechthoek,10,10,30,20,lichtblauw
+execute
+rechthoek,100,100,130,120,geel
+execute
+clearscherm,zwart
+execute
+driehoek,10,10,130,120,240,200,lichtmagenta
+execute
+driehoek,100,100,30,20,250,250,cyaan
+execute
+driehoek,130,130,17,12,333,233,lichtgroen
+execute
+clearscherm,zwart
+execute
+tekst,10,10,the quick brown fox jumps over the lazy dog,wit,norm
+execute
+tekst,10,100,the quick brown fox jumps over the lazy dog,magenta,vet
+execute
+tekst,10,200,the quick brown fox jumps over the lazy dog,lichtcyaan,cursief
+execute
+clearscherm,wit
+execute
+bitmap,0,50,50
+execute
+clearscherm,wit
+execute
+bitmap,1,50,50
+execute
+clearscherm,wit
+execute
+bitmap,2,50,50
+execute
+clearscherm,bruin
+execute
+bitmap,3,50,50
+execute
+clearscherm,wit
+execute
+wacht,2000
+tekst,10,200,all done,zwart,norm
+wacht,1234
+execute
