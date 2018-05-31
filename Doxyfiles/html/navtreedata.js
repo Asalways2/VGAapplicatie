@@ -24,10 +24,11 @@ for the JavaScript code in this file
 var NAVTREE =
 [
   [ "API-io and demo code", "index.html", [
-    [ "VGA_Library", "index.html", [
-      [ "VGA_Library", "index.html#autotoc_md0", null ],
+    [ "VGA_API Demo software", "index.html", [
+      [ "VGA_API Demo Software", "index.html#autotoc_md0", null ],
       [ "Functions", "index.html#autotoc_md1", null ],
-      [ "Blockdiagram", "index.html#autotoc_md2", null ]
+      [ "Script", "index.html#autotoc_md2", null ],
+      [ "Software diagram", "index.html#autotoc_md3", null ]
     ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
@@ -54,7 +55,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_font_bold_8h.html",
-"structscript_structure.html#a61cb9ce82bdf189db7fccb1726ff140b"
+"structscript_structure.html#a2a42d193e7e426e0e3940ed95acd07a8"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.14"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>API-io and demo code: VGA_Library</title>
+<title>API-io and demo code: VGA_API Demo software</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -87,23 +87,122 @@ $(document).ready(function(){initNavTree('index.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">VGA_Library </div>  </div>
+<div class="title">VGA_API Demo software </div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><h1><a class="anchor" id="autotoc_md0"></a>
-VGA_Library</h1>
-<p>This code is written by:</p>
-<dl class="section author"><dt>Author</dt><dd>Erwin Blankestein </dd>
+VGA_API Demo Software</h1>
+<p>This software is written by: </p><dl class="section author"><dt>Author</dt><dd>Erwin Blankestein </dd>
 <dd>
 Remy van der Pol</dd></dl>
-<p>This code contains functions to draw on a screen with VGA capabilities.</p>
+<p>This software has been written as an educational assignment at the Hogeschool Utrecht. The software consist of the VGA_API, with a demo code for using this library.</p>
+<p>The demo has been buildt for the STM32F407VG microcontroller board from ST.</p>
+<p>Links:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Demo application  </th><th class="markdownTableHeadNone">Library   </th></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a href="https://waffle.io/Asalways2/VGAlibraries/join">Waffle link Demo application</a>  </td><td class="markdownTableBodyNone"><a href="https://waffle.io/Asalways2/VGAapplicatie/join">Waffle link Library</a>   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a href="https://github.com/Asalways2/VGAapplicatie/tree/Test">Github link Demo application</a>  </td><td class="markdownTableBodyNone"><a href="https://github.com/Asalways2/VGAlibraries/tree/develop2">Github link Library</a>   </td></tr>
+</table>
 <h1><a class="anchor" id="autotoc_md1"></a>
 Functions</h1>
-<p>the functions that are available for use are documented in the <b>API_draw</b> library in the <b>API_io</b> you can edit the screen dimensions</p>
+<p>The demo software has the following functionalitys:</p>
+<ul>
+<li>
+Reading commands from the computer; </li>
+<li>
+Translating the commands to functions; </li>
+<li>
+Give feedback to the user about the received command; </li>
+<li>
+Draw the requested figures on the screen. </li>
+</ul>
+<p>The demo software has been written using a 3-layer model: the Front-layer, Logic-layer and the IO-layer.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Layer  </th><th class="markdownTableHeadNone">Function   </th></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Front-layer  </td><td class="markdownTableBodyNone">Receive and process commands   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Logic-layer  </td><td class="markdownTableBodyNone">Execute the command   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">IO-layer  </td><td class="markdownTableBodyNone">Initialize and drive the hardware   </td></tr>
+</table>
+<p>As mentioned before, the demo software makes use of the VGA_API file. This file consists of two library's: The IO_API and the DRAW_API. </p><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">API  </th><th class="markdownTableHeadNone">Function   </th></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">IO_API  </td><td class="markdownTableBodyNone">Handles the IO functions for the VGA screen   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone">DRAW_API  </td><td class="markdownTableBodyNone">Draws the figures, bitmaps and text on the screen using the IO_API   </td></tr>
+</table>
 <h1><a class="anchor" id="autotoc_md2"></a>
-Blockdiagram</h1>
+Script</h1>
+<p>To use the demo application, the user needs to connect the board to the computer using an USB cable. To be able to talk to the board, you will need to connect to the board using a serial terminal (like putty: <a href="https://www.putty.org/">https://www.putty.org/</a> for example). After the board has been connected, you can use any of the following supported commands to put something on the screen:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Command  </th><th class="markdownTableHeadNone">Parameters   </th></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">lijn, x, y, x’, y’, width, color  </td><td class="markdownTableBodyNone">x, y: starting coördinates; x', y': end coördinates; width: line width; color: line color   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone">ellips, x-mp, y-mp, radius-x, radius-y, color  </td><td class="markdownTableBodyNone">x-mp, y-mp: Ellips position; radius-x, radius-y: Ellips height and width; color: Ellips color   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">rechthoek, x-lo, y-lo, x-rb, y-rb, color  </td><td class="markdownTableBodyNone">x-lo, y-lo: Left bottom coördinates; x-rb, y-rb: right top coördinates; color: rectangle color   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone">driehoek, x, y, x’, y’,x”, y”, color  </td><td class="markdownTableBodyNone">x, y: coördinates 1; x’, y’: coördinates 2; x”, y”: coördinates 3; color: triangle color   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">tekst, x, y, text, color, style  </td><td class="markdownTableBodyNone">x, y: coördinates; text: text; color: text color; style: text style(normaal, vet, cursief)   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone">bitmap, nr, x-lo, y-lo  </td><td class="markdownTableBodyNone">nr: selected bitmap(0, 1 or 2); x-lo, y-lo: position   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">clearscherm, color  </td><td class="markdownTableBodyNone">color: screencolor   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone">wacht, msecs  </td><td class="markdownTableBodyNone">msecs: amount of miliseconds to wait before next command   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">execute  </td><td class="markdownTableBodyNone">no parameters. Script will only run after receiving this command!   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone">verbose  </td><td class="markdownTableBodyNone">no parameters. Turns errors and warnings on or off   </td></tr>
+</table>
+<p>Available colors are: </p><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">script  </th><th class="markdownTableHeadNone">color   </th></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">zwart  </td><td class="markdownTableBodyNone">Black   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone">blauw  </td><td class="markdownTableBodyNone">Blue   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">lichtblauw  </td><td class="markdownTableBodyNone">Lightblue   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone">groen  </td><td class="markdownTableBodyNone">Green   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">lichtgroen  </td><td class="markdownTableBodyNone">Lightgreen   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone">cyaan  </td><td class="markdownTableBodyNone">Cyan   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">lichtcyaan  </td><td class="markdownTableBodyNone">Lightcyan   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone">rood  </td><td class="markdownTableBodyNone">Red   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">lichtrood  </td><td class="markdownTableBodyNone">Lightred   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone">magenta  </td><td class="markdownTableBodyNone">Magenta   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">lichtmagenta  </td><td class="markdownTableBodyNone">Lightmagenta   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone">bruin  </td><td class="markdownTableBodyNone">Brown   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">geel  </td><td class="markdownTableBodyNone">Yellow   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone">grijs  </td><td class="markdownTableBodyNone">Grey   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">wit  </td><td class="markdownTableBodyNone">White   </td></tr>
+</table>
+<h1><a class="anchor" id="autotoc_md3"></a>
+Software diagram</h1>
 <div class="image">
-<img src="draft_blokschema.png" alt="draft_blokschema.png"/>
+<img src="3lagenmodel.jpg" alt="3lagenmodel.jpg"/>
 </div>
  </div></div><!-- contents -->
 </div><!-- doc-content -->

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['vga_5flibrary',['VGA_Library',['../index.html',1,'']]],
+  ['vga_5fapi_20demo_20software',['VGA_API Demo software',['../index.html',1,'']]],
   ['valoutofbounds',['valOutofBounds',['../_front_layer_8h.html#a793f74203d4fe92844230e2758118798a34f71357e9437faacc96ae7ca5ffc6ba',1,'FrontLayer.h']]],
   ['verbose',['verbose',['../_front_layer_8h.html#a21630207cef2a13b14e5770dc7880caeae83a049eb564f26389a8acc4dfc8ef5b',1,'FrontLayer.h']]],
   ['verboseflag',['verboseFlag',['../_front_layer_8c.html#a28d9bf1fbdf58211f47d1d90e9f98489',1,'FrontLayer.c']]],
